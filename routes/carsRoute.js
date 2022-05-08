@@ -27,6 +27,14 @@ const carRoute = (app) => {
         .post((req, res) => {
             const cars = getCars();
 
+            if(!req.body.modelo){
+                return res.status(400).send('Por favor, insira o modelo')
+            }
+
+            if(!req.body.marca){
+                return res.status(400).send('Por favor, insira a marca')
+            }
+
             cars.push(req.body)
             
             saveCars(cars)
